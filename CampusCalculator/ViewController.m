@@ -18,46 +18,66 @@
     display.text = @"";
 }
 
+-(void)addNumber:(NSString *)buttonValue{
+    // Get the display text of the calculator and put into a string
+    NSMutableString *displayString = [[NSMutableString alloc] initWithString:display.text];
+    // Append the value to the string
+    [displayString appendString:buttonValue];
+    // Set the display text
+    display.text = displayString;
+}
+
 - (IBAction) button1 {
-    display.text=[NSString stringWithFormat:@"%@1",display.text];
+    //display.text=[NSString stringWithFormat:@"%@1",display.text];
+    [self addNumber:@"1"];
 }
 - (IBAction) button2 {
-    display.text=[NSString stringWithFormat:@"%@2",display.text];
+    //display.text=[NSString stringWithFormat:@"%@2",display.text];
+    [self addNumber:@"2"];
 }
 - (IBAction) button3 {
-    display.text=[NSString stringWithFormat:@"%@3",display.text];
+    //display.text=[NSString stringWithFormat:@"%@3",display.text];
+    [self addNumber:@"3"];
 }
 
 - (IBAction) button4 {
-    display.text=[NSString stringWithFormat:@"%@4",display.text];
+    //display.text=[NSString stringWithFormat:@"%@4",display.text];
+    [self addNumber:@"4"];
 }
 
 - (IBAction) button5 {
-    display.text=[NSString stringWithFormat:@"%@5",display.text];
+    //display.text=[NSString stringWithFormat:@"%@5",display.text];
+    [self addNumber:@"5"];
 }
 
 - (IBAction) button6 {
-    display.text=[NSString stringWithFormat:@"%@6",display.text];
+    //display.text=[NSString stringWithFormat:@"%@6",display.text];
+    [self addNumber:@"6"];
 }
 
 - (IBAction) button7 {
-    display.text=[NSString stringWithFormat:@"%@7",display.text];
+    //display.text=[NSString stringWithFormat:@"%@7",display.text];
+    [self addNumber:@"7"];
 }
 
 - (IBAction) button8 {
-    display.text=[NSString stringWithFormat:@"%@8",display.text];
+    //display.text=[NSString stringWithFormat:@"%@8",display.text];
+    [self addNumber:@"8"];
 }
 
 - (IBAction) button9 {
-    display.text=[NSString stringWithFormat:@"%@9",display.text];
+    //display.text=[NSString stringWithFormat:@"%@9",display.text];
+    [self addNumber:@"9"];
 }
 
 - (IBAction) button0 {
-    display.text=[NSString stringWithFormat:@"%@0",display.text];
+    //display.text=[NSString stringWithFormat:@"%@0",display.text];
+    [self addNumber:@"0"];
 }
 
 - (IBAction) button01 {
-    display.text=[NSString stringWithFormat:@"%@.",display.text];
+    //display.text=[NSString stringWithFormat:@"%@.",display.text];
+    [self addNumber:@"."];
 }
 
 - (IBAction) plusbutton {
@@ -114,6 +134,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    // Add wait timer for 20 seconds for alert.
+    NSTimer *waitTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(wrongAnswer:) userInfo:nil repeats:NO];
+}
+
+-(void)wrongAnswer{
+    // Add wrong alert
+    wrongAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Question 2 is wrong." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    // Show alert
+    [wrongAlert show];
 }
 
 - (void)viewDidUnload
