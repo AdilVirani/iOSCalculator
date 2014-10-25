@@ -16,6 +16,7 @@ typedef enum{ Plus,Minus,Multiply,Divide} CalcOperation;
     IBOutlet UIButton *cbutton;
     NSString *storage;
     CalcOperation operation;
+    UIAlertView *wrongAlert;
 }
 
 - (IBAction) button1;
